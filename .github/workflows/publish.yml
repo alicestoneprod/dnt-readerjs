@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: tonpm
-        run: pnpm publish --access public --no-git-checks --contents dist/ package.json README.md
+        run: pnpm publish --access public --no-git-checks
         working-directory: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GT_TOKEN }}
