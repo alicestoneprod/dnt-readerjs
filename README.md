@@ -1,5 +1,5 @@
 <div fontsize align="center">
-<img src="assets/logo.png" width=300 >
+<img src="https://github.com/alicestoneprod/dnt-readerjs/blob/main/assets/logo.png?raw=true" width=300 >
 <a href="https://github.com/alicestoneprod/dnt-readerjs"><h1>dnt-readerjs</h1></a>
 <p><strong>dnt-readerjs</strong> is a simple way to extract data from Dragon Nest Table (DNT) files<p>
 </div>
@@ -43,7 +43,7 @@ columnNames.forEach((column) => console.log(column))
 ```
 
 <div align=center>Output:</br>
-<img src="assets/output.png"/></div>
+<img src="https://github.com/alicestoneprod/dnt-readerjs/blob/main/assets/output.png?raw=true"/></div>
 <hr>
 
 <div align=center id="contributing"><h1>🤝 Contributing</h1></br>
