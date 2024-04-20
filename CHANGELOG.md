@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.4
+
+### Patch Changes
+
+- 359d579: fix package size
+
 ## 0.0.3
 
 ### Patch Changes
