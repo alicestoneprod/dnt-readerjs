@@ -7,8 +7,12 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "release": "pnpm publish --no-git-checks",
+    "release": "pnpm publish --no-git-checks --contents dist/ package.json README.md",
     "lint": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alicestoneprod/dnt-readerjs.git"
   },
   "author": "Alice Morozova",
   "license": "MIT",
