@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "release": "pnpm publish",
+    "release": "pnpm publish --not-git-checks",
     "lint": "tsc"
   },
   "author": "Alice Morozova",
