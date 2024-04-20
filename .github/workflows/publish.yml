@@ -33,6 +33,7 @@ jobs:
           publish: pnpm run release
       - name: publish
         run: pnpm publish --access public
+        working-directory: dist
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
