@@ -2,3 +2,5 @@ assets
 .github
 tsconfig.json
 .changeset
+src
+.prettierrc.cjs
