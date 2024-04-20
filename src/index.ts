@@ -2,7 +2,7 @@ import DntReader, { DntData } from "./dntreader.js"
 
 const dntReader = new DntReader()
 
-export function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData> {
+function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData> {
   try {
     return dntReader.processFile(buffer, fileName)
   } catch (e) {
@@ -17,3 +17,5 @@ export function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntD
     }
   }
 }
+
+export default extractData
