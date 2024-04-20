@@ -20,7 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  default: () => src_default
+  extractData: () => extractData
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -244,6 +244,17 @@ function extractData(buffer, fileName) {
     return dntReader.processFile(buffer, fileName);
   } catch (e) {
     console.error(e);
+    return {
+      data: [],
+      columnNames: [],
+      columnTypes: [],
+      columnIndexes: { ["none"]: 0 },
+      numRows: 0,
+      numColumns: 0
+    };
   }
 }
-var src_default = extractData;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  extractData
+});

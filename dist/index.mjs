@@ -218,9 +218,16 @@ function extractData(buffer, fileName) {
     return dntReader.processFile(buffer, fileName);
   } catch (e) {
     console.error(e);
+    return {
+      data: [],
+      columnNames: [],
+      columnTypes: [],
+      columnIndexes: { ["none"]: 0 },
+      numRows: 0,
+      numColumns: 0
+    };
   }
 }
-var src_default = extractData;
 export {
-  src_default as default
+  extractData
 };

@@ -9,6 +9,6 @@ interface DntData {
     numColumns: number;
 }
 
-declare function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData> | void;
+declare function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData>;
 
-export { extractData as default };
+export { extractData };
