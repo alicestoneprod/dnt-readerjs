@@ -1,5 +1,5 @@
 {
-  "name": "dnt-reader",
+  "name": "dnt-readerjs",
   "version": "0.0.1",
   "description": "Simple package to read DNT (Dragon Nest Table) files",
   "main": "dist/index.js",
