@@ -1,12 +1,12 @@
 {
-  "name": "dnt-readerjs",
+  "name": "dnt-reader",
   "version": "0.0.1",
   "description": "Simple package to read DNT (Dragon Nest Table) files",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc"
   },
   "author": "Alice Morozova",
