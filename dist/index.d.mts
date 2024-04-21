@@ -11,4 +11,4 @@ interface DntData {
 
 declare function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData>;
 
-export { extractData as default };
+export { type DntData, extractData as default };

@@ -26,8 +26,6 @@ yarn add dnt-readerjs --dev
 
 <h2 align="center" id="introduction">📚 Introduction</h2>
 
-Install with npm:
-
 ```js
 import extractData from "dnt-readerjs"
 
