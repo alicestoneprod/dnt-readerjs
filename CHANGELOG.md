@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.7
+
+### Patch Changes
+
+- 054e69e: fix type export
+
 ## 0.0.6
 
 ### Patch Changes
