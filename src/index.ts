@@ -18,4 +18,6 @@ function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData> {
   }
 }
 
+export { DntData }
+
 export default extractData
