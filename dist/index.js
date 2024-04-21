@@ -20,7 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  default: () => src_default
+  extractData: () => extractData
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -254,4 +254,7 @@ function extractData(buffer, fileName) {
     };
   }
 }
-var src_default = extractData;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  extractData
+});

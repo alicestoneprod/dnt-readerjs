@@ -1,14 +1,14 @@
-interface DntData {
-    data: any[];
-    columnNames: string[];
-    columnTypes: number[];
-    columnIndexes: {
-        [key: string]: number;
-    };
-    numRows: number;
-    numColumns: number;
+export interface DntData {
+  data: any[]
+  columnNames: string[]
+  columnTypes: number[]
+  columnIndexes: {
+    [key: string]: number
+  }
+  numRows: number
+  numColumns: number
 }
 
-declare function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData>;
+declare function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntData>
 
-export { type DntData, extractData as default };
+export { extractData }

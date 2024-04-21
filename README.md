@@ -27,7 +27,7 @@ yarn add dnt-readerjs --dev
 <h2 align="center" id="introduction">📚 Introduction</h2>
 
 ```js
-import extractData from "dnt-readerjs"
+import { extractData } from "dnt-readerjs"
 
 // You should read file as ArrayBuffer to use this function before
 // Please, provide the correct extention (.dnt) of file before using data extract function

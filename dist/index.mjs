@@ -228,7 +228,6 @@ function extractData(buffer, fileName) {
     };
   }
 }
-var src_default = extractData;
 export {
-  src_default as default
+  extractData
 };
