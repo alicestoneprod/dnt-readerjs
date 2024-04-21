@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.6
+
+### Patch Changes
+
+- 737f32f: added dntdata type export
+
 ## 0.0.5
 
 ### Patch Changes
