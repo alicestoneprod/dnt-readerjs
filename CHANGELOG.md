@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.8
+
+### Patch Changes
+
+- 8b49e4e: "change main function export and fix type export"
+
 ## 0.0.7
 
 ### Patch Changes
