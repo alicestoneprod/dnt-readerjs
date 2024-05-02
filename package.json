@@ -1,6 +1,6 @@
 {
   "name": "dnt-readerjs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simple package to read DNT (Dragon Nest Table) files",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
