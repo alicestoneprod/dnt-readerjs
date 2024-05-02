@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.9
+
+### Patch Changes
+
+- 7ad82b1: fix column names
+
 ## 0.0.8
 
 ### Patch Changes
