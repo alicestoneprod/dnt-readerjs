@@ -96,7 +96,7 @@ class DntReader {
       let realNumCols = 0
 
       for (let c = 1; c < this.numColumns; ++c) {
-        const colName = reader.readString().substr(1)
+        const colName = reader.readString().substr(0)
         const colType = reader.readByte()
 
         if (this.colsToLoad === null || this.colsToLoad[colName]) {
