@@ -20,26 +20,26 @@ var SimplerReader = class {
   readFloat32() {
     this.pos += 4;
     const floatVal = this.file.getFloat32(this.pos - 4, this.littleEndian);
-    return Math.round(floatVal * 1e5) / 1e5;
+    return floatVal;
   }
   readByte() {
     this.pos += 1;
     return this.file.getUint8(this.pos - 1);
   }
   readString() {
-    const len = this.readUint16();
+    let len = this.readUint16();
     if (len === 0) {
       return "";
     } else if (len === 1) {
       return String.fromCharCode(this.readByte());
     } else {
-      const strings = new Array(len);
+      let strings = new Array(len);
       for (let c = 0; c < len; ++c) {
         strings[c] = String.fromCharCode(this.readByte());
       }
       let val = strings.join("");
-      if (val && val.length > 6 && val.indexOf(".") > 0 && !isNaN(parseFloat(val))) {
-        val = String(Math.round(Number(val) * 1e5) / 1e5);
+      if (val && val.length > 6 && val.indexOf(".") > 0 && !isNaN(parseInt(val))) {
+        return val.toString();
       }
       return val;
     }
@@ -130,8 +130,8 @@ var DntReader = class {
       let colIndex = 1;
       let realNumCols = 0;
       for (let c = 1; c < this.numColumns; ++c) {
-        const colName = reader.readString().substr(0);
-        const colType = reader.readByte();
+        let colName = reader.readString().substr(0);
+        let colType = reader.readByte();
         if (this.colsToLoad === null || this.colsToLoad[colName]) {
           colIsRead[c] = true;
           colReaders[c] = readFuncs[colType];
@@ -160,12 +160,8 @@ var DntReader = class {
       this.numColumns = realNumCols;
       this.columnIndexes = { id: 0 };
       for (let c = 1; c < this.numColumns; ++c) {
-        if (this.columnIndexes) {
-        }
         this.columnIndexes[this.columnNames[c]] = c;
       }
-      const end = (/* @__PURE__ */ new Date()).getTime();
-      this.processTime = end - start;
       const dntData = {
         data: this.data,
         columnNames: this.columnNames,
@@ -176,37 +172,8 @@ var DntReader = class {
       };
       return dntData;
     } catch (e) {
-      console.error(e);
-      return {
-        data: this.data,
-        columnNames: this.columnNames,
-        columnTypes: this.columnTypes,
-        columnIndexes: this.columnIndexes,
-        numRows: this.numRows,
-        numColumns: this.numColumns
-      };
+      throw new Error("An error occurred while reading .DNT");
     }
-  }
-  getRow(index) {
-    return this.convertData(this.data[index]);
-  }
-  convertData(d) {
-    let item = { id: d[0] };
-    for (var c = 1; c < this.numColumns; ++c) {
-      if (d[c] != null) {
-        item[this.columnNames[c]] = d[c];
-      }
-    }
-    return item;
-  }
-  getValue(index, colName) {
-    if (colName in this.columnIndexes) {
-      const colIndex = this.columnIndexes[colName];
-      if (colIndex !== void 0) {
-        return this.data[index][colIndex];
-      }
-    }
-    return null;
   }
 };
 var dntreader_default = DntReader;
