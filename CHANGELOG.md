@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.11
+
+### Patch Changes
+
+- bd6dcca: Fix NaN and number round operations
+
 ## 0.0.10
 
 ### Patch Changes
