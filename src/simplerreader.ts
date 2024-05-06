@@ -43,7 +43,7 @@ class SimplerReader implements SimplerReaderI {
   readFloat32(): number {
     this.pos += 4
     const floatVal = this.file.getFloat32(this.pos - 4, this.littleEndian)
-    return Math.round(floatVal * 100000) / 100000
+    return floatVal
   }
 
   readByte(): number {
@@ -52,20 +52,22 @@ class SimplerReader implements SimplerReaderI {
   }
 
   readString(): string {
-    const len = this.readUint16()
+    let len = this.readUint16()
     if (len === 0) {
       return ""
     } else if (len === 1) {
       return String.fromCharCode(this.readByte())
     } else {
-      const strings = new Array(len)
+      let strings = new Array(len)
       for (let c = 0; c < len; ++c) {
         strings[c] = String.fromCharCode(this.readByte())
       }
+
       let val = strings.join("")
-      if (val && val.length > 6 && val.indexOf(".") > 0 && !isNaN(parseFloat(val))) {
-        val = String(Math.round(Number(val) * 100000) / 100000)
+      if (val && val.length > 6 && val.indexOf(".") > 0 && !isNaN(parseInt(val))) {
+        return val.toString()
       }
+
       return val
     }
   }

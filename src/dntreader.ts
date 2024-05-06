@@ -96,8 +96,8 @@ class DntReader {
       let realNumCols = 0
 
       for (let c = 1; c < this.numColumns; ++c) {
-        const colName = reader.readString().substr(0)
-        const colType = reader.readByte()
+        let colName = reader.readString().substr(0)
+        let colType = reader.readByte()
 
         if (this.colsToLoad === null || this.colsToLoad[colName]) {
           colIsRead[c] = true
@@ -120,11 +120,11 @@ class DntReader {
         colIndex = 1
         for (let c = 1; c < this.numColumns; ++c) {
           if (colIsRead[c]) {
-            //@ts-ignore
+            // @ts-ignore
             this.data[r][colIndex] = colReaders[c](reader)
             colIndex++
           } else {
-            //@ts-ignore
+            // @ts-ignore
             colReaders[c](reader)
           }
         }
@@ -134,14 +134,9 @@ class DntReader {
 
       this.columnIndexes = { id: 0 }
       for (let c = 1; c < this.numColumns; ++c) {
-        if (this.columnIndexes) {
-        }
-        //@ts-ignore
+        // @ts-ignore
         this.columnIndexes[this.columnNames[c]] = c
       }
-
-      const end = new Date().getTime()
-      this.processTime = end - start
 
       const dntData = {
         data: this.data,
@@ -154,43 +149,8 @@ class DntReader {
 
       return dntData
     } catch (e) {
-      console.error(e)
-      return {
-        data: this.data,
-        columnNames: this.columnNames,
-        columnTypes: this.columnTypes,
-        columnIndexes: this.columnIndexes,
-        numRows: this.numRows,
-        numColumns: this.numColumns,
-      }
+      throw new Error("An error occurred while reading .DNT")
     }
-  }
-
-  getRow(index: number): any {
-    return this.convertData(this.data[index])
-  }
-
-  convertData(d: any): any {
-    let item: any = { id: d[0] }
-
-    for (var c = 1; c < this.numColumns; ++c) {
-      if (d[c] != null) {
-        //@ts-ignore
-        item[this.columnNames[c]] = d[c]
-      }
-    }
-
-    return item
-  }
-
-  getValue(index: number, colName: string): any {
-    if (colName in this.columnIndexes) {
-      const colIndex = this.columnIndexes[colName]
-      if (colIndex !== undefined) {
-        return this.data[index][colIndex]
-      }
-    }
-    return null
   }
 }
 

@@ -17,3 +17,5 @@ export function extractData(buffer: ArrayBuffer, fileName: string): Partial<DntD
     }
   }
 }
+
+export { DntData }
