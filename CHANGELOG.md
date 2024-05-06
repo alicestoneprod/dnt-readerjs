@@ -1,5 +1,11 @@
 # dnt-readerjs
 
+## 0.0.10
+
+### Patch Changes
+
+- 4a89707: fix interface export
+
 ## 0.0.9
 
 ### Patch Changes
