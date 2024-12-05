@@ -22,6 +22,11 @@ var SimplerReader = class {
     const floatVal = this.file.getFloat32(this.pos - 4, this.littleEndian);
     return floatVal;
   }
+  readFloat64() {
+    this.pos += 8;
+    const doubleFloatValue = this.file.getFloat64(this.pos - 8, this.littleEndian);
+    return doubleFloatValue;
+  }
   readByte() {
     this.pos += 1;
     return this.file.getUint8(this.pos - 1);
@@ -58,6 +63,9 @@ var SimplerReader = class {
   }
   skipByte() {
     this.pos += 1;
+  }
+  skipFloat64() {
+    this.pos += 8;
   }
   skipString() {
     const len = this.readUint16();
@@ -102,6 +110,9 @@ var DntReader = class {
       readFuncs[5] = function(reader2) {
         return reader2.readFloat32();
       };
+      readFuncs[6] = function(reader2) {
+        return reader2.readFloat64();
+      };
       const skipFuncs = [];
       skipFuncs[1] = function(reader2) {
         reader2.skipString();
@@ -117,6 +128,9 @@ var DntReader = class {
       };
       skipFuncs[5] = function(reader2) {
         reader2.skipFloat32();
+      };
+      skipFuncs[6] = function(reader2) {
+        reader2.skipFloat64();
       };
       this.numColumns = reader.readUint16() + 1;
       this.numRows = reader.readUint32();

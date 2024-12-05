@@ -46,6 +46,12 @@ class SimplerReader implements SimplerReaderI {
     return floatVal
   }
 
+  readFloat64(): number {
+    this.pos += 8
+    const doubleFloatValue = this.file.getFloat64(this.pos - 8, this.littleEndian)
+    return doubleFloatValue
+  }
+
   readByte(): number {
     this.pos += 1
     return this.file.getUint8(this.pos - 1)
@@ -90,6 +96,10 @@ class SimplerReader implements SimplerReaderI {
 
   skipByte(): void {
     this.pos += 1
+  }
+
+  skipFloat64(): void {
+    this.pos += 8
   }
 
   skipString(): void {

@@ -63,6 +63,9 @@ class DntReader {
       readFuncs[5] = function (reader: SimplerReader) {
         return reader.readFloat32()
       }
+      readFuncs[6] = function (reader: SimplerReader) {
+        return reader.readFloat64()
+      }
 
       const skipFuncs = []
       skipFuncs[1] = function (reader: SimplerReader) {
@@ -79,6 +82,9 @@ class DntReader {
       }
       skipFuncs[5] = function (reader: SimplerReader) {
         reader.skipFloat32()
+      }
+      skipFuncs[6] = function (reader: SimplerReader) {
+        reader.skipFloat64()
       }
 
       this.numColumns = reader.readUint16() + 1
